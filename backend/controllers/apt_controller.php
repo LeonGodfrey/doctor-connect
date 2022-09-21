@@ -31,7 +31,7 @@ function getSingleApt(array $request){
 function storeApts(array $request){
 
     $doctor = $request["doctor_id"];
-    $patient = 1;
+    $patient = $_SESSION["user"][0]["patient_id"];
     $message = $request["message"];
     $date = $request["date"];
     $time = $request["time"];

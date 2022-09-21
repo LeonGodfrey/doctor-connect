@@ -50,7 +50,7 @@ function storePatient(array $request){
 
    
     if(!is_null(DB::getConnection())){
-        $password = md5("1234");
+        $password = md5($password);
         $sql = "INSERT INTO 
          patients(patient_first_name,patient_last_name,patient_email,patient_contact,patient_gender,patient_password,patient_age)
          values('$first_name','$last_name','$email','$contact','$gender','$password','$age')";

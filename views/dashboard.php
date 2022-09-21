@@ -169,7 +169,7 @@
 													<img width="28" height="28" class="rounded-circle" src="assets/img/user.jpg" alt=""> 
 													<h2><?php echo $patient["patient_first_name"] ?> <?php echo $patient["patient_last_name"] ?></h2>
 												</td>
-												<td>J<?php echo $patient["patient_email"] ?>/td>
+												<td>J<?php echo $patient["patient_email"] ?></td>
 												<td><?php echo $patient["patient_contact"] ?></td>
 												<td><a href="?view=patients"><button class="btn btn-primary btn-primary-one float-right">Details</button></a> </td>
 											</tr>
