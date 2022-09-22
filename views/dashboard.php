@@ -155,7 +155,7 @@
 					<div class="col-12 col-md-6 col-lg-8 col-xl-8" >
 						<div class="card" style="min-height:300px ;">
 							<div class="card-header">
-								<h4 class="card-title d-inline-block">New Patients </h4> <a href="patients.html" class="btn btn-primary float-right">View all</a>
+								<h4 class="card-title d-inline-block">New Patients </h4> <a href="?view=patients" class="btn btn-primary float-right">View all</a>
 							</div>
 							<div class="card-block">
 								<div class="table-responsive">

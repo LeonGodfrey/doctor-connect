@@ -91,7 +91,7 @@
                             </div>
 							<div class="form-group">
                                 <label>Short Biography</label>
-                                <textarea class="form-control" rows="3" cols="30"></textarea>
+                                <textarea class="form-control" rows="3" cols="30" name="biography"></textarea>
                             </div>
                             <div class="form-group">
                                 <label class="display-block">Status</label>

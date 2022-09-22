@@ -63,13 +63,14 @@ function storeDoctor(array $request,array $image){
 
 
 
-    $doctor_dept = 1;
+    $doctor_dept = $request["dept_id"];
+    $biography = $request["biography"];
    
     if(!is_null(DB::getConnection())){
-        $password = md5("1234");
+        $password = md5($password);
         $sql = "INSERT INTO 
-         doctors(doctor_first_name,doctor_last_name,doctor_email,doctor_contact,doctor_gender,department_id,doctor_password,profile_image)
-         values('$first_name','$last_name','$email','$contact','$gender','$doctor_dept','$password','$image' )";
+         doctors(doctor_first_name,doctor_last_name,doctor_email,doctor_contact,doctor_gender,department_id,doctor_password,profile_image,doctor_biography)
+         values('$first_name','$last_name','$email','$contact','$gender','$doctor_dept','$password','$image','$biography')";
         DB::getConnection()->exec($sql);
         $_SESSION["success"] = "Doctor Created Successfully";
     }
@@ -87,7 +88,7 @@ function editDoctor(array $request,$image){
         $email = $request["email"];
         $gender = $request["gender"];
         $biography = $request["biography"];
-        $doctor_dept = $request["deparment_id"];;
+        $doctor_dept = $request["deparment_id"];
         $doctor_id = $request["id"];
 
         $original_image = $image;
