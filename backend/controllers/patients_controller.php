@@ -56,6 +56,8 @@ function storePatient(array $request){
          values('$first_name','$last_name','$email','$contact','$gender','$password','$age')";
         DB::getConnection()->exec($sql);
         $_SESSION["success"] = "Patient Account Created Successfully, You can now login.";
+        header("location:../login.php");
+        exit();
     }
 
 }

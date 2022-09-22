@@ -37,6 +37,19 @@
                         <li>
                             <a href="?view=chat" class="nav-link"><i class="fa fa-comments"></i> <span>Chat</span> <span class="badge badge-pill bg-primary float-right chat-count">0</span> </a>
                         </li>
+                        <?php endif ?>
+
+                        <?php if($_SESSION["role"]!="doctor" && $_SESSION["role"]!="admin"): ?>
+                        <li>
+                            <a href="tel:+256757878391" target="blank" class="nav-link"><i class="fa fa-ambulance"></i> <span>Emergency Call</span> </a>
+                        </li>
+
+                        <?php endif ?>
+
+                        <?php if($_SESSION["role"]!="patient" && $_SESSION["role"]!="admin"): ?>
+                        <li>
+                            <a href="video.php" target="blank" class="nav-link"><i class="fa fa-camera"></i> <span>Video Call</span> </a>
+                        </li>
 
                         <?php endif ?>
                       	

@@ -16,7 +16,6 @@ require("backend/controllers/apt_controller.php");
 require("backend/controllers/chat_controller.php");
 
 
-
 if(isset($_GET["view"])){
   $view = $_GET["view"];
 }
@@ -25,6 +24,8 @@ if(isset($_GET["view"])){
 if($view=="doctors"){
   $doctors = getDoctors();
 }
+
+
 
 
 if($view=="patients"){
@@ -66,7 +67,7 @@ if($view =="add-doctor"){
 
 
 if($view=="edit-patient"){
-  $patients = getSinglePatient($_GET);
+  $patients = getSinglePatient($_GET);$id = 0;
 }
 
 if($view=="profile"){
@@ -96,7 +97,7 @@ if($view=="edit-appointment"){
   $appointments = getSingleApt($_GET);
   $doctors = getDoctors();
 }
-
+$id = 0;
 
 if($view=="edit-dept"){
   $depts = getSingleDept($_GET);

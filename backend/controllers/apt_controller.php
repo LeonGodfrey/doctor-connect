@@ -52,14 +52,46 @@ function storeApts(array $request){
 function aptAction(array $request){
     $action = $request["action"];
     $id = $request["id"];
+
+    // -----------
+    $conn = new mysqli("localhost", "admin", "admin", "hospital");
+    $sql = "SELECT patient_id, appointment_date, appointment_time FROM appointments WHERE appointment_id = $id";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    $patient1 = $row['patient_id'];
+    $sql1 = "SELECT patient_email FROM patients WHERE patient_id = $patient1";
+    $result1 = $conn->query($sql);
+    $row1 = $result->fetch_assoc();
+    $patient2 = $row1['patient_email'];
+    // ======
+
     $query = "UPDATE appointments SET appointment_status=";
     if($action=="approve"){
+        
+         
+        $to = $patient2;
+        $subject = "Doctor-connect";
+        $txt = "Your appointment has been approved scheduled on ".$row['appointment_date']." at ".$row['appointment_time'];
+        $headers = "From: doctorconnectsys05@gmail.com" . "\r\n";
+
+        mail($to,$subject,$txt,$headers);    
+
+
+
+        // ----------
         $query .="'approved'";
         $_SESSION["success"] = "Appointment Approved Successfully";
     }
     if($action=="reject"){
         $query .="'rejected'";
          $_SESSION["success"] = "Appointment Rejected Successfully";
+
+         $to = $patient2;
+        $subject = "Doctor-connect";
+        $txt = "Your appointment has been rejected";
+        $headers = "From: doctorconnectsys05@gmail.com" . "\r\n";
+
+        mail($to,$subject,$txt,$headers); 
     }
 
     if($action=="pend"){

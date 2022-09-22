@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 19, 2022 at 02:13 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Sep 22, 2022 at 09:59 AM
+-- Server version: 10.6.7-MariaDB-2ubuntu1.1
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -72,11 +72,15 @@ INSERT INTO `appointments` (`appointment_id`, `patient_id`, `doctor_id`, `appoin
 (11, 1, 17, '2022-02-10', 'Eye stress', 'pending', '10:00:00', '2022-09-15 13:29:28'),
 (12, 1, 11, '2022-09-10', 'tooth pain', 'pending', '00:00:00', '2022-09-15 13:31:30'),
 (13, 1, 1, '2022-10-09', 'pain', 'approved', '00:00:00', '2022-09-15 13:36:04'),
-(14, 1, 1, '9000-05-06', 'fffff', 'pending', '15:04:00', '2022-09-15 19:16:56'),
+(14, 1, 1, '9000-05-06', 'fffff', 'rejected', '15:04:00', '2022-09-15 19:16:56'),
 (15, 1, 11, '2022-09-20', 'can i get help', 'pending', '14:40:00', '2022-09-19 11:51:13'),
 (16, 1, 14, '2022-09-20', 'EEEEEEEEEEE', 'pending', '15:04:00', '2022-09-19 11:52:51'),
 (17, 8, 1, '2022-09-20', 'Thiis is urgent', 'pending', '04:00:00', '2022-09-19 11:56:31'),
-(18, 8, 14, '2022-09-21', 'This is  a humble request', 'rejected', '16:55:00', '2022-09-19 11:57:34');
+(18, 8, 14, '2022-09-21', 'This is  a humble request', 'rejected', '16:55:00', '2022-09-19 11:57:34'),
+(20, 9, 1, '2022-10-10', '', 'approved', '12:11:00', '2022-09-21 12:37:23'),
+(21, 10, 21, '2022-10-01', 'sickness', 'rejected', '09:43:00', '2022-09-21 13:37:00'),
+(22, 9, 21, '2022-11-12', '', 'approved', '09:30:00', '2022-09-21 14:17:07'),
+(23, 9, 1, '2022-12-12', '', 'approved', '12:30:00', '2022-09-21 14:17:57');
 
 -- --------------------------------------------------------
 
@@ -187,7 +191,12 @@ INSERT INTO `chats` (`chat_id`, `patient_id`, `doctor_id`, `sender_role`, `chat_
 (87, 8, 14, 'patient', 'Hello Dr Kizza', 'doctor', '2022-09-19 11:36:42'),
 (88, 8, 14, 'patient', 'Are you ok', 'doctor', '2022-09-19 11:46:39'),
 (89, 1, 14, 'patient', 'This is ben', 'doctor', '2022-09-19 11:47:47'),
-(90, 1, 14, 'doctor', 'Hey Ben man ', 'none', '2022-09-19 11:48:25');
+(90, 1, 14, 'doctor', 'Hey Ben man ', 'none', '2022-09-19 11:48:25'),
+(91, 1, 1, 'doctor', 'hi\r\n', 'none', '2022-09-20 14:31:57'),
+(92, 5, 1, 'patient', 'how are you', 'doctor', '2022-09-20 14:40:13'),
+(93, 9, 1, 'doctor', 'helo', 'patient', '2022-09-21 12:35:23'),
+(94, 9, 1, 'patient', 'hey', 'doctor', '2022-09-21 12:36:29'),
+(95, 9, 1, 'doctor', 'http://10.10.134.94/job/doctor/video.php', 'none', '2022-09-21 14:05:40');
 
 -- --------------------------------------------------------
 
@@ -209,7 +218,10 @@ CREATE TABLE `departments` (
 
 INSERT INTO `departments` (`department_id`, `department_name`, `department_desc`, `department_status`, `department_create_date`) VALUES
 (1, 'Dentist', 'For teeth', 'active', '2022-09-06 12:52:48'),
-(4, 'Gynecologist', 'Censored information', 'active', '2022-09-12 09:13:55');
+(4, 'Gynecologist', 'Censored information', 'active', '2022-09-12 09:13:55'),
+(7, 'physician', 'awesome', 'active', '2022-09-21 13:30:18'),
+(8, 'radiologist ', 'injuries', 'active', '2022-09-21 13:31:02'),
+(9, 'cardiologist', 'heart', 'active', '2022-09-21 13:32:21');
 
 -- --------------------------------------------------------
 
@@ -238,13 +250,7 @@ CREATE TABLE `doctors` (
 
 INSERT INTO `doctors` (`doctor_id`, `doctor_first_name`, `doctor_email`, `doctor_contact`, `doctor_last_name`, `doctor_gender`, `status`, `doctor_biography`, `profile_image`, `department_id`, `doctor_password`, `doctor_create_date`) VALUES
 (1, 'Abby', 'abby@gmail.com', '0765567987', 'Gael', 'm', 'active', 'I am better at treating people', '4740749745216391703869732651006988690672326072674289909user-03.jpg', 4, '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-06 06:43:39'),
-(9, 'Allen', 'doctor@gmail.com', '0702789000', 'Noah', 'f', 'active', 'Am a cool doctor', '8671362042536462966856498001708565248534410440636360721009430973193586748998981102doctor-thumb-02.jpg', 4, '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-07 12:38:30'),
-(11, 'Prince', 'prince@gmail.com', '0702789000', 'Charles', 'm', 'active', 'I am the price now', '2643496474191775268957017654789797231741699830577457524277688637137575193233411doctor-thumb-01.jpg', 4, '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-12 05:53:13'),
-(13, 'Museveni', 'm7@gmail.com', '07777777777', '', 'm', 'active', '\"\"', 'user.jpg', 2, '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-12 05:56:01'),
-(14, 'Kiiza', 'besigye@gmail.com', '0765567983', '', 'm', 'active', 'I can even run for presidency.', '1006988690672326072674289909user-03.jpg', 1, '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-12 05:59:21'),
-(15, 'Sarah', 'alicek@gmail.com', '0704678898', 'Kamuntu', 'm', 'active', 'The best disease warrior', '499991613506634859670309293doctor-thumb-10.jpg', 4, '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-12 06:00:29'),
-(17, 'Bengo', 'admin@gmail.com', '0708123890', '', 'm', 'active', '\"\"', '28483537243951022222742031doctor-thumb-01.jpg', 1, '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-12 11:19:10'),
-(20, 'Doc', 'adam@gmail.com', '0769567987', 'Harry', 'f', 'active', '\"\"', '204879055731378303207375256AdminLTELogo.png', 1, '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-16 11:14:44');
+(21, 'Sheenah', 'sheynah@gmail.com', '0775694108', 'me', 'f', 'active', '\"\"', '391135625610664344398796101Screenshot (5).png', 1, '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-21 13:07:40');
 
 -- --------------------------------------------------------
 
@@ -270,13 +276,16 @@ CREATE TABLE `patients` (
 --
 
 INSERT INTO `patients` (`patient_id`, `patient_first_name`, `patient_last_name`, `patient_email`, `patient_contact`, `patient_age`, `patient_gender`, `patient_profile_image`, `patient_password`, `patient_create_date`) VALUES
-(1, 'Ben', 'Aflec George', 'patient@gmail.com', '0703519068', 89, 'm', '1water_consumption.jpg', '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-06 08:09:23'),
-(3, 'Bobi', 'Wine', 'bobi@gmail.com', '0765567989', 39, 'm', '3images2.jpg', '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-12 05:21:59'),
-(4, 'Barrack', 'Husein', 'husein@gmail.com', '0702789007', 60, 'm', 'user.jpg', '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-12 05:24:35'),
 (5, 'Seki', 'Seki', 'seki@gmail.com', '0708564234', 89, 'm', 'user.jpg', '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-15 11:54:23'),
-(6, 'aaaa', 'aaa', 'abby@gmail.com', '0702789000', 45, 'm', 'user.jpg', '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-16 10:47:31'),
-(7, 'Onne', 'Gift', 'gifto@gmail.com', '078645342', 12, 'f', 'user.jpg', '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-19 11:30:01'),
-(8, 'Pattrick', 'Henrfy', 'patrick@gmail.com', '0702789006', 78, 'm', 'user.jpg', '202cb962ac59075b964b07152d234b70', '2022-09-19 11:32:50');
+(9, 'Godfrey', 'Ssegawa', 'ssegodfrey171@gmail.com', '0753446252', 10, 'm', '9IMG_20201024_141811_646.jpg', '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-20 15:22:12'),
+(10, 'Hope', 'Kansiime', 'hope@gmail.com', '0757961588', 78, 'f', 'user.jpg', '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-21 13:34:55'),
+(11, 'SSEGAWA', 's', 'kayondo@gmail.com', '45', 1, 'm', 'user.jpg', '5c443b2003676fa5e8966030ce3a86ea', '2022-09-21 18:59:07'),
+(12, 'Godfrey', 'Ssegawa', 'leon@gmail.com', '0753446212', 12, 'm', 'user.jpg', '5aefcc1ab1392f2715bf7acc99526b7e', '2022-09-22 05:57:56'),
+(13, 'Godfrey', 'Ssegawa', 'leon2@gmail.coom', '075344625235', 12, 'm', 'user.jpg', '5aefcc1ab1392f2715bf7acc99526b7e', '2022-09-22 06:13:46'),
+(14, 'henry', 'Nalu', 'henry@gmail.com', '0757777777', 46, 'm', 'user.jpg', '32a37efb640563afb3835c2614a7aea1', '2022-09-22 06:32:57'),
+(15, 'Kalule', 'Rajab', 'rajkal@gmail.com', '07566572912', 23, 'm', 'user.jpg', '3ca6671a73be57ba7256b90f5a005a8d', '2022-09-22 06:46:04'),
+(16, 'Mamuku', 'Christine', 'christn@gmail.com', '0786543876', 45, 'f', 'user.jpg', 'ccadde22ee8c9cd9339b3e5db71d4521', '2022-09-22 06:52:04'),
+(17, 'kale', 'mane', 'mane@gmail.com', '0777777777', 87, 'm', 'user.jpg', '494fe17d0fc8f7b06b5beb5e9cf359b3', '2022-09-22 06:56:22');
 
 -- --------------------------------------------------------
 
@@ -379,7 +388,10 @@ INSERT INTO `ratings` (`rating_id`, `doctor_id`, `patient_id`, `rating_value`, `
 (57, 14, 1, 2, '2022-09-12 09:18:08'),
 (58, 10, 1, 3, '2022-09-12 10:46:02'),
 (59, 10, 1, 2, '2022-09-12 10:46:12'),
-(60, 11, 1, 3, '2022-09-15 13:40:22');
+(60, 11, 1, 3, '2022-09-15 13:40:22'),
+(61, 1, 5, 2, '2022-09-20 14:39:06'),
+(62, 1, 5, 2, '2022-09-20 14:39:12'),
+(63, 21, 10, 5, '2022-09-21 13:37:47');
 
 --
 -- Indexes for dumped tables
@@ -447,31 +459,31 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `chats`
 --
 ALTER TABLE `chats`
-  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `doctor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `doctor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `patient_details`
@@ -483,7 +495,7 @@ ALTER TABLE `patient_details`
 -- AUTO_INCREMENT for table `ratings`
 --
 ALTER TABLE `ratings`
-  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

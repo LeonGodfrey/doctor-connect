@@ -27,7 +27,7 @@ session_start();
 
             <div class="card" >
 
-                <img src="assets/img/bg.jpg" style="min-height: 650px;object-fit: cover;">
+                <img src="assets/img/cover.jpg" style="min-height: 650px;object-fit: cover;">
 
 
             </div>
@@ -100,7 +100,7 @@ session_start();
     <?php if(isset($_SESSION["success"])):?>
 
     <script>
-    swal("Info","<?php echo $_SESSION["info"] ?>","info");
+    swal("Success","<?php echo $_SESSION["success"] ?>","success");
     </script>
 
     <?php endif ?>
