@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 22, 2022 at 09:59 AM
+-- Generation Time: Sep 22, 2022 at 02:17 PM
 -- Server version: 10.6.7-MariaDB-2ubuntu1.1
 -- PHP Version: 8.1.10
 
@@ -80,7 +80,8 @@ INSERT INTO `appointments` (`appointment_id`, `patient_id`, `doctor_id`, `appoin
 (20, 9, 1, '2022-10-10', '', 'approved', '12:11:00', '2022-09-21 12:37:23'),
 (21, 10, 21, '2022-10-01', 'sickness', 'rejected', '09:43:00', '2022-09-21 13:37:00'),
 (22, 9, 21, '2022-11-12', '', 'approved', '09:30:00', '2022-09-21 14:17:07'),
-(23, 9, 1, '2022-12-12', '', 'approved', '12:30:00', '2022-09-21 14:17:57');
+(23, 9, 1, '2022-12-12', '', 'rejected', '12:30:00', '2022-09-21 14:17:57'),
+(24, 19, 1, '2022-09-23', 'pliz', 'pending', '21:46:00', '2022-09-22 07:38:51');
 
 -- --------------------------------------------------------
 
@@ -196,7 +197,13 @@ INSERT INTO `chats` (`chat_id`, `patient_id`, `doctor_id`, `sender_role`, `chat_
 (92, 5, 1, 'patient', 'how are you', 'doctor', '2022-09-20 14:40:13'),
 (93, 9, 1, 'doctor', 'helo', 'patient', '2022-09-21 12:35:23'),
 (94, 9, 1, 'patient', 'hey', 'doctor', '2022-09-21 12:36:29'),
-(95, 9, 1, 'doctor', 'http://10.10.134.94/job/doctor/video.php', 'none', '2022-09-21 14:05:40');
+(95, 9, 1, 'doctor', 'http://10.10.134.94/job/doctor/video.php', 'none', '2022-09-21 14:05:40'),
+(96, 12, 1, 'doctor', 'http://10.10.134.94/job/doctor/video.php', 'none', '2022-09-22 07:08:51'),
+(97, 19, 1, 'patient', 'jebale', 'doctor', '2022-09-22 07:22:19'),
+(98, 19, 1, 'doctor', 'kale oliwa', 'patient', '2022-09-22 07:31:54'),
+(99, 19, 1, 'doctor', 'http://10.10.134.94/job/doctor/video.php', 'patient', '2022-09-22 07:32:29'),
+(100, 19, 1, 'doctor', 'http://10.10.134.94/job/doctor/video.php', 'patient', '2022-09-22 11:13:49'),
+(101, 10, 1, 'doctor', 'http://10.10.134.94/job/doctor/video.php', 'patient', '2022-09-22 11:17:05');
 
 -- --------------------------------------------------------
 
@@ -249,8 +256,10 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`doctor_id`, `doctor_first_name`, `doctor_email`, `doctor_contact`, `doctor_last_name`, `doctor_gender`, `status`, `doctor_biography`, `profile_image`, `department_id`, `doctor_password`, `doctor_create_date`) VALUES
-(1, 'Abby', 'abby@gmail.com', '0765567987', 'Gael', 'm', 'active', 'I am better at treating people', '4740749745216391703869732651006988690672326072674289909user-03.jpg', 4, '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-06 06:43:39'),
-(21, 'Sheenah', 'sheynah@gmail.com', '0775694108', 'me', 'f', 'active', '\"\"', '391135625610664344398796101Screenshot (5).png', 1, '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-21 13:07:40');
+(1, 'Henry', 'abby@gmail.com', '0765567987', 'Nalumenya', 'm', 'active', 'I am better at treating people', '1156666891274697881607632981pp.jpg', 4, '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-06 06:43:39'),
+(21, 'Sheenah', 'sheynah@gmail.com', '0775694108', 'Owembabazi', 'f', 'active', 'good at treating teeth', '391135625610664344398796101Screenshot (5).png', 1, '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-21 13:07:40'),
+(22, 'Ssebufu ', 'stvnssebufu@gmail.com', '', 'Steven', 'm', 'active', 'me is cool', '455175375566162734324185617FB_IMG_1615223473628-1.jpg', 7, 'd65388ae4b052fafa928c68ee15c8d0c', '2022-09-22 10:14:38'),
+(26, 'Amon', 'amon22@gmail.com', '0786543867', 'Kabenge', 'm', 'active', 'iam  Amon dr', '623585208942513759874118459sys3.jpg', 9, 'eb9242cdce45d96d5bb1ae56abe25cdf', '2022-09-22 11:10:08');
 
 -- --------------------------------------------------------
 
@@ -276,16 +285,10 @@ CREATE TABLE `patients` (
 --
 
 INSERT INTO `patients` (`patient_id`, `patient_first_name`, `patient_last_name`, `patient_email`, `patient_contact`, `patient_age`, `patient_gender`, `patient_profile_image`, `patient_password`, `patient_create_date`) VALUES
-(5, 'Seki', 'Seki', 'seki@gmail.com', '0708564234', 89, 'm', 'user.jpg', '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-15 11:54:23'),
-(9, 'Godfrey', 'Ssegawa', 'ssegodfrey171@gmail.com', '0753446252', 10, 'm', '9IMG_20201024_141811_646.jpg', '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-20 15:22:12'),
 (10, 'Hope', 'Kansiime', 'hope@gmail.com', '0757961588', 78, 'f', 'user.jpg', '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-21 13:34:55'),
-(11, 'SSEGAWA', 's', 'kayondo@gmail.com', '45', 1, 'm', 'user.jpg', '5c443b2003676fa5e8966030ce3a86ea', '2022-09-21 18:59:07'),
-(12, 'Godfrey', 'Ssegawa', 'leon@gmail.com', '0753446212', 12, 'm', 'user.jpg', '5aefcc1ab1392f2715bf7acc99526b7e', '2022-09-22 05:57:56'),
-(13, 'Godfrey', 'Ssegawa', 'leon2@gmail.coom', '075344625235', 12, 'm', 'user.jpg', '5aefcc1ab1392f2715bf7acc99526b7e', '2022-09-22 06:13:46'),
-(14, 'henry', 'Nalu', 'henry@gmail.com', '0757777777', 46, 'm', 'user.jpg', '32a37efb640563afb3835c2614a7aea1', '2022-09-22 06:32:57'),
 (15, 'Kalule', 'Rajab', 'rajkal@gmail.com', '07566572912', 23, 'm', 'user.jpg', '3ca6671a73be57ba7256b90f5a005a8d', '2022-09-22 06:46:04'),
 (16, 'Mamuku', 'Christine', 'christn@gmail.com', '0786543876', 45, 'f', 'user.jpg', 'ccadde22ee8c9cd9339b3e5db71d4521', '2022-09-22 06:52:04'),
-(17, 'kale', 'mane', 'mane@gmail.com', '0777777777', 87, 'm', 'user.jpg', '494fe17d0fc8f7b06b5beb5e9cf359b3', '2022-09-22 06:56:22');
+(19, 'Nal', 'Henry', 'nal@gmail.com', '0789121234', 22, 'm', '19109E7BA1-B2EB-431E-AB8C-BB395458E944.jpeg', 'dbb2a6be50dd109016dd420808d5a575', '2022-09-22 07:19:02');
 
 -- --------------------------------------------------------
 
@@ -308,7 +311,8 @@ CREATE TABLE `patient_details` (
 
 INSERT INTO `patient_details` (`details_id`, `previous_diseases`, `current_diseases`, `document`, `patient_id`, `details_create_date`) VALUES
 (1, 'Fever', 'Ebola', '12015 test guide.docx', 1, '2022-09-16 06:10:58'),
-(2, 'Addiction', 'Cancer', 'nodoc', 3, '2022-09-16 08:31:21');
+(2, 'Addiction', 'Cancer', 'nodoc', 3, '2022-09-16 08:31:21'),
+(3, 'typhoid', 'malaria', 'nodoc', 19, '2022-09-22 07:20:17');
 
 -- --------------------------------------------------------
 
@@ -391,7 +395,8 @@ INSERT INTO `ratings` (`rating_id`, `doctor_id`, `patient_id`, `rating_value`, `
 (60, 11, 1, 3, '2022-09-15 13:40:22'),
 (61, 1, 5, 2, '2022-09-20 14:39:06'),
 (62, 1, 5, 2, '2022-09-20 14:39:12'),
-(63, 21, 10, 5, '2022-09-21 13:37:47');
+(63, 21, 10, 5, '2022-09-21 13:37:47'),
+(64, 1, 19, 5, '2022-09-22 08:40:53');
 
 --
 -- Indexes for dumped tables
@@ -459,13 +464,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `chats`
 --
 ALTER TABLE `chats`
-  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -477,25 +482,25 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `doctor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `doctor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `patient_details`
 --
 ALTER TABLE `patient_details`
-  MODIFY `details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ratings`
 --
 ALTER TABLE `ratings`
-  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
