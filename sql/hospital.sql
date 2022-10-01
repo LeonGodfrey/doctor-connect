@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 22, 2022 at 02:17 PM
+-- Generation Time: Oct 01, 2022 at 07:52 PM
 -- Server version: 10.6.7-MariaDB-2ubuntu1.1
 -- PHP Version: 8.1.10
 
@@ -81,7 +81,10 @@ INSERT INTO `appointments` (`appointment_id`, `patient_id`, `doctor_id`, `appoin
 (21, 10, 21, '2022-10-01', 'sickness', 'rejected', '09:43:00', '2022-09-21 13:37:00'),
 (22, 9, 21, '2022-11-12', '', 'approved', '09:30:00', '2022-09-21 14:17:07'),
 (23, 9, 1, '2022-12-12', '', 'rejected', '12:30:00', '2022-09-21 14:17:57'),
-(24, 19, 1, '2022-09-23', 'pliz', 'pending', '21:46:00', '2022-09-22 07:38:51');
+(24, 19, 1, '2022-09-23', 'pliz', 'pending', '21:46:00', '2022-09-22 07:38:51'),
+(25, 19, 1, '2022-09-23', 'pliz', 'pending', '15:29:00', '2022-09-22 11:29:20'),
+(26, 15, 1, '2022-04-05', 'kjuhygtreds', 'pending', '11:11:00', '2022-09-22 14:05:10'),
+(27, 15, 26, '2022-03-05', 'asrdtfyg', 'approved', '15:02:00', '2022-09-22 14:06:26');
 
 -- --------------------------------------------------------
 
@@ -256,7 +259,7 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`doctor_id`, `doctor_first_name`, `doctor_email`, `doctor_contact`, `doctor_last_name`, `doctor_gender`, `status`, `doctor_biography`, `profile_image`, `department_id`, `doctor_password`, `doctor_create_date`) VALUES
-(1, 'Henry', 'abby@gmail.com', '0765567987', 'Nalumenya', 'm', 'active', 'I am better at treating people', '1156666891274697881607632981pp.jpg', 4, '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-06 06:43:39'),
+(1, 'Henry', 'henry@gmail.com', '0765567987', 'Nalumenya', 'm', 'active', 'I am better at treating people', '1156666891274697881607632981pp.jpg', 4, '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-06 06:43:39'),
 (21, 'Sheenah', 'sheynah@gmail.com', '0775694108', 'Owembabazi', 'f', 'active', 'good at treating teeth', '391135625610664344398796101Screenshot (5).png', 1, '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-21 13:07:40'),
 (22, 'Ssebufu ', 'stvnssebufu@gmail.com', '', 'Steven', 'm', 'active', 'me is cool', '455175375566162734324185617FB_IMG_1615223473628-1.jpg', 7, 'd65388ae4b052fafa928c68ee15c8d0c', '2022-09-22 10:14:38'),
 (26, 'Amon', 'amon22@gmail.com', '0786543867', 'Kabenge', 'm', 'active', 'iam  Amon dr', '623585208942513759874118459sys3.jpg', 9, 'eb9242cdce45d96d5bb1ae56abe25cdf', '2022-09-22 11:10:08');
@@ -273,8 +276,8 @@ CREATE TABLE `patients` (
   `patient_last_name` varchar(255) NOT NULL,
   `patient_email` varchar(255) NOT NULL,
   `patient_contact` varchar(255) NOT NULL,
-  `patient_age` int(3) NOT NULL,
-  `patient_gender` varchar(11) NOT NULL DEFAULT 'm',
+  `patient_age` int(3) DEFAULT NULL,
+  `patient_gender` varchar(11) DEFAULT 'm',
   `patient_profile_image` varchar(255) NOT NULL DEFAULT 'user.jpg',
   `patient_password` varchar(255) NOT NULL,
   `patient_create_date` timestamp NOT NULL DEFAULT current_timestamp()
@@ -288,7 +291,9 @@ INSERT INTO `patients` (`patient_id`, `patient_first_name`, `patient_last_name`,
 (10, 'Hope', 'Kansiime', 'hope@gmail.com', '0757961588', 78, 'f', 'user.jpg', '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-21 13:34:55'),
 (15, 'Kalule', 'Rajab', 'rajkal@gmail.com', '07566572912', 23, 'm', 'user.jpg', '3ca6671a73be57ba7256b90f5a005a8d', '2022-09-22 06:46:04'),
 (16, 'Mamuku', 'Christine', 'christn@gmail.com', '0786543876', 45, 'f', 'user.jpg', 'ccadde22ee8c9cd9339b3e5db71d4521', '2022-09-22 06:52:04'),
-(19, 'Nal', 'Henry', 'nal@gmail.com', '0789121234', 22, 'm', '19109E7BA1-B2EB-431E-AB8C-BB395458E944.jpeg', 'dbb2a6be50dd109016dd420808d5a575', '2022-09-22 07:19:02');
+(19, 'Nal', 'Henry', 'nal@gmail.com', '0789121234', 22, 'm', '19109E7BA1-B2EB-431E-AB8C-BB395458E944.jpeg', 'dbb2a6be50dd109016dd420808d5a575', '2022-09-22 07:19:02'),
+(20, 'NIRINGIYIMAANA', 'Emmanuel', 'emmanuelniringiyimaana@gmail.com', '0703487337', 23, 'm', '201900728724.jpeg', 'eee8226e49414acbd19ffe56579cddca', '2022-09-22 11:24:41'),
+(21, 'kazimiri', 'chrispus', 'chris@gmail.com', '0753446252', NULL, 'm', '21IMG_20201024_141811_646.jpg', '5c443b2003676fa5e8966030ce3a86ea', '2022-10-01 16:40:48');
 
 -- --------------------------------------------------------
 
@@ -312,7 +317,8 @@ CREATE TABLE `patient_details` (
 INSERT INTO `patient_details` (`details_id`, `previous_diseases`, `current_diseases`, `document`, `patient_id`, `details_create_date`) VALUES
 (1, 'Fever', 'Ebola', '12015 test guide.docx', 1, '2022-09-16 06:10:58'),
 (2, 'Addiction', 'Cancer', 'nodoc', 3, '2022-09-16 08:31:21'),
-(3, 'typhoid', 'malaria', 'nodoc', 19, '2022-09-22 07:20:17');
+(3, 'typhoid', 'malaria', 'nodoc', 19, '2022-09-22 07:20:17'),
+(4, 'Coffee ', 'Malaria ', 'nodoc', 20, '2022-09-22 11:29:39');
 
 -- --------------------------------------------------------
 
@@ -396,7 +402,8 @@ INSERT INTO `ratings` (`rating_id`, `doctor_id`, `patient_id`, `rating_value`, `
 (61, 1, 5, 2, '2022-09-20 14:39:06'),
 (62, 1, 5, 2, '2022-09-20 14:39:12'),
 (63, 21, 10, 5, '2022-09-21 13:37:47'),
-(64, 1, 19, 5, '2022-09-22 08:40:53');
+(64, 1, 19, 5, '2022-09-22 08:40:53'),
+(65, 26, 21, 4, '2022-10-01 16:41:40');
 
 --
 -- Indexes for dumped tables
@@ -464,7 +471,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `chats`
@@ -488,19 +495,19 @@ ALTER TABLE `doctors`
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `patient_details`
 --
 ALTER TABLE `patient_details`
-  MODIFY `details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `ratings`
 --
 ALTER TABLE `ratings`
-  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

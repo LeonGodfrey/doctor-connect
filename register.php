@@ -189,14 +189,14 @@ session_start();
 
 
 
-                                <div class="col-sm-6">
+                                <!-- <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Age <span class="text-danger"></span></label>
 
                                         <input type="number" class="form-control" name="age" required>
 
                                     </div>
-                                </div>
+                                </div> -->
 
 
                                 <div class="col-sm-6">
