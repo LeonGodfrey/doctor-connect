@@ -18,7 +18,7 @@
                                 <textarea cols="30" rows="4" name="desc" class="form-control"></textarea>
                             </div>
                             <div class="form-group">
-                                <label class="display-block">Speciality Status</label>
+                                <label class="display-block">Department Status</label>
 								<div class="form-check form-check-inline">
 									<input class="form-check-input" type="radio" name="status" name="status" id="product_active" value="active" checked>
 									<label class="form-check-label" for="product_active">
