@@ -29,7 +29,7 @@
                         </li> -->
                         <?php if($_SESSION["role"]=="admin"): ?>
                         <li>
-                            <a href="?view=depts" class="nav-link"><i class="fa fa-hospital-o"></i> <span>Specialities</span></a>
+                            <a href="?view=depts" class="nav-link"><i class="fa fa-hospital-o"></i> <span>Department</span></a>
                         </li>
                         <?php endif ?>
                         

@@ -3,12 +3,12 @@
             <div class="content">
                 <div class="row">
                     <div class="col-sm-5 col-5">
-                        <h4 class="page-title">Specialities</h4>
+                        <h4 class="page-title">Departments</h4>
                     </div>
                     <div class="col-sm-7 col-7 text-right m-b-30">
 
                     <?php if($_SESSION["role"]=="admin"): ?>
-                        <a href="?view=add-dept" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Add Speciality</a>
+                        <a href="?view=add-dept" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Add Department</a>
                     <?php endif ?>
                          </div>
                 </div>
@@ -19,7 +19,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Speciality Name</th>
+                                        <th>Department Name</th>
                                         <th>Status</th>
                                         <th class="text-right">Action</th>
                                     </tr>
@@ -58,7 +58,7 @@
                     <div class="modal-content">
                         <div class="modal-body text-center">
                             <img src="assets/img/sent.png" alt="" width="50" height="46">
-                            <h3>Are you sure want to delete this Speciality?</h3>
+                            <h3>Are you sure want to delete this Department?</h3>
                             <div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
                                 <a id="deleteLink"><button type="submit" class="btn btn-danger">Delete</button></a>
                             </div>
