@@ -19,7 +19,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Speciality Name</th>
+                                        <th>Department Name</th>
                                         <th>Status</th>
                                         <th class="text-right">Action</th>
                                     </tr>
