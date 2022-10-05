@@ -33,7 +33,7 @@ function storePatient(array $request){
     $contact = $request["contact"];
     $email = $request["email"];
     $gender = $request["gender"];
-    $age = $request["age"];
+    $dob = $request["dob"];
 
 
     if(email_exists($email)){
@@ -52,8 +52,8 @@ function storePatient(array $request){
     if(!is_null(DB::getConnection())){
         $password = md5($password);
         $sql = "INSERT INTO 
-         patients(patient_first_name,patient_last_name,patient_email,patient_contact,patient_gender,patient_password,patient_age)
-         values('$first_name','$last_name','$email','$contact','$gender','$password','$age')";
+         patients(patient_first_name,patient_last_name,patient_email,patient_contact,patient_gender,patient_password,patient_dob)
+         values('$first_name','$last_name','$email','$contact','$gender','$password','$dob')";
         DB::getConnection()->exec($sql);
         $_SESSION["success"] = "Patient Account Created Successfully, You can now login.";
         header("location:../login.php");
@@ -139,7 +139,7 @@ function editPatient(array $request){
     $contact = $request["contact"];
     $email = $request["email"];
     $gender = $request["gender"];
-    $age = $request["age"];
+    $dob = $request["dob"];
 
     $img = $request["img_name"];
 
@@ -159,7 +159,7 @@ function editPatient(array $request){
          patient_contact='$contact',
          patient_gender='$gender',
          patient_profile_image='$img',
-         patient_age='$age' where patient_id='$id'
+         patient_dob='$dob' where patient_id='$id'
          ";
         DB::getConnection()->exec($sql);
         $_SESSION["success"] = "Patient Record Updated Successfully";

@@ -63,9 +63,9 @@
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label>Age <span class="text-danger"></span></label>
+                                        <label>Date of Birth <span class="text-danger"></span></label>
                                        
-                                            <input type="number" class="form-control" name="age" value="<?php echo($patient['patient_age']) ?>">
+                                            <input type="date" class="form-control" name="dob" value="">
                                        
                                     </div>
                                 </div>

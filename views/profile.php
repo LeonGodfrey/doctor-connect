@@ -82,8 +82,8 @@ $role = $_SESSION["role"];
 
                                                 <?php if($role=="patient"):?>
                                                 <li>
-                                                    <span class="title">Age:</span>
-                                                    <span class="text"><?php echo $user["$role"."_"."age"] ?></span>
+                                                    <span class="title">Date of Birth:</span>
+                                                    <span class="text"><?php echo $user["$role"."_"."dob"] ?></span>
                                                 </li>
 
                                                 <li>

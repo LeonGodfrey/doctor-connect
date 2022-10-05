@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 22, 2022 at 02:17 PM
+-- Generation Time: Oct 06, 2022 at 12:34 AM
 -- Server version: 10.6.7-MariaDB-2ubuntu1.1
 -- PHP Version: 8.1.10
 
@@ -58,7 +58,7 @@ CREATE TABLE `appointments` (
   `appointment_date` date NOT NULL,
   `appointment_message` text NOT NULL,
   `appointment_status` varchar(100) NOT NULL DEFAULT 'pending',
-  `appointment_time` time NOT NULL,
+  `appointment_time` time DEFAULT NULL,
   `appointment_create_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -67,21 +67,13 @@ CREATE TABLE `appointments` (
 --
 
 INSERT INTO `appointments` (`appointment_id`, `patient_id`, `doctor_id`, `appointment_date`, `appointment_message`, `appointment_status`, `appointment_time`, `appointment_create_date`) VALUES
-(9, 1, 11, '2022-09-17', 'Thi is', 'approved', '12:00:00', '2022-09-15 11:31:19'),
-(10, 1, 1, '2022-12-08', 'This is great', 'approved', '12:00:00', '2022-09-15 11:34:56'),
-(11, 1, 17, '2022-02-10', 'Eye stress', 'pending', '10:00:00', '2022-09-15 13:29:28'),
-(12, 1, 11, '2022-09-10', 'tooth pain', 'pending', '00:00:00', '2022-09-15 13:31:30'),
-(13, 1, 1, '2022-10-09', 'pain', 'approved', '00:00:00', '2022-09-15 13:36:04'),
-(14, 1, 1, '9000-05-06', 'fffff', 'rejected', '15:04:00', '2022-09-15 19:16:56'),
-(15, 1, 11, '2022-09-20', 'can i get help', 'pending', '14:40:00', '2022-09-19 11:51:13'),
-(16, 1, 14, '2022-09-20', 'EEEEEEEEEEE', 'pending', '15:04:00', '2022-09-19 11:52:51'),
-(17, 8, 1, '2022-09-20', 'Thiis is urgent', 'pending', '04:00:00', '2022-09-19 11:56:31'),
 (18, 8, 14, '2022-09-21', 'This is  a humble request', 'rejected', '16:55:00', '2022-09-19 11:57:34'),
 (20, 9, 1, '2022-10-10', '', 'approved', '12:11:00', '2022-09-21 12:37:23'),
 (21, 10, 21, '2022-10-01', 'sickness', 'rejected', '09:43:00', '2022-09-21 13:37:00'),
 (22, 9, 21, '2022-11-12', '', 'approved', '09:30:00', '2022-09-21 14:17:07'),
 (23, 9, 1, '2022-12-12', '', 'rejected', '12:30:00', '2022-09-21 14:17:57'),
-(24, 19, 1, '2022-09-23', 'pliz', 'pending', '21:46:00', '2022-09-22 07:38:51');
+(24, 19, 1, '2022-09-23', 'pliz', 'pending', '21:46:00', '2022-09-22 07:38:51'),
+(25, 21, 1, '2022-10-07', 'tyhuo', 'pending', '15:08:00', '2022-10-05 21:11:28');
 
 -- --------------------------------------------------------
 
@@ -273,7 +265,7 @@ CREATE TABLE `patients` (
   `patient_last_name` varchar(255) NOT NULL,
   `patient_email` varchar(255) NOT NULL,
   `patient_contact` varchar(255) NOT NULL,
-  `patient_age` int(3) NOT NULL,
+  `patient_dob` date NOT NULL,
   `patient_gender` varchar(11) NOT NULL DEFAULT 'm',
   `patient_profile_image` varchar(255) NOT NULL DEFAULT 'user.jpg',
   `patient_password` varchar(255) NOT NULL,
@@ -284,11 +276,12 @@ CREATE TABLE `patients` (
 -- Dumping data for table `patients`
 --
 
-INSERT INTO `patients` (`patient_id`, `patient_first_name`, `patient_last_name`, `patient_email`, `patient_contact`, `patient_age`, `patient_gender`, `patient_profile_image`, `patient_password`, `patient_create_date`) VALUES
-(10, 'Hope', 'Kansiime', 'hope@gmail.com', '0757961588', 78, 'f', 'user.jpg', '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-21 13:34:55'),
-(15, 'Kalule', 'Rajab', 'rajkal@gmail.com', '07566572912', 23, 'm', 'user.jpg', '3ca6671a73be57ba7256b90f5a005a8d', '2022-09-22 06:46:04'),
-(16, 'Mamuku', 'Christine', 'christn@gmail.com', '0786543876', 45, 'f', 'user.jpg', 'ccadde22ee8c9cd9339b3e5db71d4521', '2022-09-22 06:52:04'),
-(19, 'Nal', 'Henry', 'nal@gmail.com', '0789121234', 22, 'm', '19109E7BA1-B2EB-431E-AB8C-BB395458E944.jpeg', 'dbb2a6be50dd109016dd420808d5a575', '2022-09-22 07:19:02');
+INSERT INTO `patients` (`patient_id`, `patient_first_name`, `patient_last_name`, `patient_email`, `patient_contact`, `patient_dob`, `patient_gender`, `patient_profile_image`, `patient_password`, `patient_create_date`) VALUES
+(10, 'Hope', 'Kansiime', 'hope@gmail.com', '0757961588', '1944-01-01', 'f', 'user.jpg', '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-21 13:34:55'),
+(15, 'Kalule', 'Rajab', 'rajkal@gmail.com', '07566572912', '1999-01-01', 'm', 'user.jpg', '3ca6671a73be57ba7256b90f5a005a8d', '2022-09-22 06:46:04'),
+(16, 'Mamuku', 'Christine', 'christn@gmail.com', '0786543876', '1977-01-01', 'f', 'user.jpg', 'ccadde22ee8c9cd9339b3e5db71d4521', '2022-09-22 06:52:04'),
+(19, 'Nal', 'Henry', 'nal@gmail.com', '0789121234', '2000-01-01', 'm', '19109E7BA1-B2EB-431E-AB8C-BB395458E944.jpeg', 'dbb2a6be50dd109016dd420808d5a575', '2022-09-22 07:19:02'),
+(21, 'Godfrey', 'Ssegawa', 'leon2@gmail.coom', '0753446252', '1998-08-08', 'm', 'user.jpg', '202cb962ac59075b964b07152d234b70', '2022-10-05 18:28:56');
 
 -- --------------------------------------------------------
 
@@ -464,7 +457,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `chats`
@@ -488,7 +481,7 @@ ALTER TABLE `doctors`
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `patient_details`

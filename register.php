@@ -18,78 +18,90 @@ session_start();
 		<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
     <style type="text/css">
+        #passwordInput {
+            width: 100%;
+            display: flex;
+            position: relative;
+        }
 
-#passwordInput{
-    width: 100%;
-    display: flex;
-    position: relative;
-}
- #passwordInput input[type="password"], #passwordInput input[type="text"]{
-    width: 100%;
-    padding: 10px;
-    border: 1px solid lightgrey;
-    font-size: 15px;
-    
-}
+        #passwordInput input[type="password"],
+        #passwordInput input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid lightgrey;
+            font-size: 15px;
 
-#passwordInput #showHide{
-  font-size: 12px;
-    font-weight: 600;
-   position: absolute;
-   color:red;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    user-select: none;
-}
-#passwordStrength{
-    width: 100%;
-    height: 5px;
-    margin: 5px 0;
-    display: none;
-}
-#passwordStrength span{
-  position: relative;
-  height: 100%;
-  width: 100%;
-  background: lightgrey;
-  border-radius: 5px;
-}
- #passwordStrength span:nth-child(2){
-  margin: 0 3px;
-}
-#passwordStrength span.active:before{
-  position: absolute;
-  content: '';
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  border-radius: 5px;
-}
-#passwordStrength span#poor:before{
-  background-color: #ff4757;
-}
-#passwordStrength span#weak:before{
-  background-color: orange;
-}
-#passwordStrength span#strong:before{
-  background-color: #23ad5c;
-}
-#passwordInfo{
-  font-size: 15px;
-}
-#passwordInfo #poor{
-  color: red;
-}
-#passwordInfo #weak{
-  color: orange;
-}
-#passwordInfo #strong{
-  color: green;
-}
-</style>
+        }
+
+        #passwordInput #showHide {
+            font-size: 12px;
+            font-weight: 600;
+            position: absolute;
+            color: red;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        #passwordStrength {
+            width: 100%;
+            height: 5px;
+            margin: 5px 0;
+            display: none;
+        }
+
+        #passwordStrength span {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            background: lightgrey;
+            border-radius: 5px;
+        }
+
+        #passwordStrength span:nth-child(2) {
+            margin: 0 3px;
+        }
+
+        #passwordStrength span.active:before {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        #passwordStrength span#poor:before {
+            background-color: #ff4757;
+        }
+
+        #passwordStrength span#weak:before {
+            background-color: orange;
+        }
+
+        #passwordStrength span#strong:before {
+            background-color: #23ad5c;
+        }
+
+        #passwordInfo {
+            font-size: 15px;
+        }
+
+        #passwordInfo #poor {
+            color: red;
+        }
+
+        #passwordInfo #weak {
+            color: orange;
+        }
+
+        #passwordInfo #strong {
+            color: green;
+        }
+    </style>
 
 </head>
 
@@ -191,9 +203,10 @@ session_start();
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label>Age <span class="text-danger"></span></label>
+                                        <label>Date of birth <span class="text-danger"></span></label>
 
-                                        <input type="number" class="form-control" name="age" required>
+                                        <input type="date" class="form-control" name="dob" required>
+                                        <!-- <input type="date" name="dob" placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31" class="form-control" required> -->
 
                                     </div>
                                 </div>
@@ -276,116 +289,110 @@ session_start();
         </script>
     <?php endif ?>
 
-    
+
     <script>
-    let passwordInput = document.querySelector('#passwordInput input[type="password"]');
-    let passwordStrength= document.getElementById('passwordStrength');
-    let poor = document.querySelector('#passwordStrength #poor');
-    let weak = document.querySelector('#passwordStrength #weak');
-    let strong = document.querySelector('#passwordStrength #strong');
-    let passwordInfo = document.getElementById('passwordInfo');
-  
-    let poorRegExp = /[a-z]/;
-    let weakRegExp = /(?=.*?[0-9])/;;
-    let strongRegExp = /(?=.*?[#?!@$%^&*-])/;
-    let whitespaceRegExp = /^$|\s+/;
+        let passwordInput = document.querySelector('#passwordInput input[type="password"]');
+        let passwordStrength = document.getElementById('passwordStrength');
+        let poor = document.querySelector('#passwordStrength #poor');
+        let weak = document.querySelector('#passwordStrength #weak');
+        let strong = document.querySelector('#passwordStrength #strong');
+        let passwordInfo = document.getElementById('passwordInfo');
+
+        let poorRegExp = /[a-z]/;
+        let weakRegExp = /(?=.*?[0-9])/;;
+        let strongRegExp = /(?=.*?[#?!@$%^&*-])/;
+        let whitespaceRegExp = /^$|\s+/;
 
 
-    passwordInput.oninput= function(){
-   
-         let passwordValue= passwordInput.value;
-         let passwordLength= passwordValue.length;
+        passwordInput.oninput = function() {
 
-         let poorPassword= passwordValue.match(poorRegExp);
-         let weakPassword= passwordValue.match(weakRegExp);
-         let strongPassword= passwordValue.match(strongRegExp);
-         let whitespace= passwordValue.match(whitespaceRegExp);
+            let passwordValue = passwordInput.value;
+            let passwordLength = passwordValue.length;
 
- if(passwordValue != ""){
+            let poorPassword = passwordValue.match(poorRegExp);
+            let weakPassword = passwordValue.match(weakRegExp);
+            let strongPassword = passwordValue.match(strongRegExp);
+            let whitespace = passwordValue.match(whitespaceRegExp);
 
-     passwordStrength.style.display = "block";
-     passwordStrength.style.display = "flex";
-     passwordInfo.style.display = "block";
-     passwordInfo.style.color = "black";
+            if (passwordValue != "") {
 
-     if(whitespace)
-     {
-      passwordInfo.textContent = "whitespaces are not allowed";
-     }else{
-     poorPasswordStrength(passwordLength, poorPassword, weakPassword, strongPassword);
-     weakPasswordStrength(passwordLength, poorPassword, weakPassword, strongPassword);
-     strongPasswordStrength(passwordLength, poorPassword, weakPassword, strongPassword);
-    }
+                passwordStrength.style.display = "block";
+                passwordStrength.style.display = "flex";
+                passwordInfo.style.display = "block";
+                passwordInfo.style.color = "black";
 
-     
-   }else{
-     
-     passwordStrength.style.display = "none";
-     passwordInfo.style.display = "none";
-    
-   }
- }
+                if (whitespace) {
+                    passwordInfo.textContent = "whitespaces are not allowed";
+                } else {
+                    poorPasswordStrength(passwordLength, poorPassword, weakPassword, strongPassword);
+                    weakPasswordStrength(passwordLength, poorPassword, weakPassword, strongPassword);
+                    strongPasswordStrength(passwordLength, poorPassword, weakPassword, strongPassword);
+                }
 
-function poorPasswordStrength(passwordLength, poorPassword, weakPassword, strongPassword){
 
-      if(passwordLength <= 3 && (poorPassword || weakPassword || strongPassword))
-        {
-       poor.classList.add("active");
-       passwordInfo.style.display = "block";
-       passwordInfo.style.color = "red";
-       passwordInfo.textContent = "Your password is Poor";
-          
+            } else {
+
+                passwordStrength.style.display = "none";
+                passwordInfo.style.display = "none";
+
+            }
         }
-}
 
-function weakPasswordStrength(passwordLength, poorPassword, weakPassword, strongPassword){
-   if(passwordLength>= 4 && poorPassword && (weakPassword || strongPassword))
-    {
-     weak.classList.add("active");
-     passwordInfo.textContent = "Your password is Weak";
-     passwordInfo.style.color = "orange";
-   
-   }else{
-     weak.classList.remove("active");
-     
-   }
-}
+        function poorPasswordStrength(passwordLength, poorPassword, weakPassword, strongPassword) {
 
-function strongPasswordStrength(passwordLength, poorPassword, weakPassword, strongPassword){
+            if (passwordLength <= 3 && (poorPassword || weakPassword || strongPassword)) {
+                poor.classList.add("active");
+                passwordInfo.style.display = "block";
+                passwordInfo.style.color = "red";
+                passwordInfo.textContent = "Your password is Poor";
 
-  if(passwordLength >= 6 && (poorPassword && weakPassword) && strongPassword)
-    {
-     poor.classList.add("active");
-     weak.classList.add("active");
-     strong.classList.add("active");
-     passwordInfo.textContent = "Your password is strong";
-     passwordInfo.style.color = "green";
-   }else{
-     strong.classList.remove("active");
-     
-   }
-}
+            }
+        }
 
-let showHide = document.querySelector('#passwordInput #showHide');
+        function weakPasswordStrength(passwordLength, poorPassword, weakPassword, strongPassword) {
+            if (passwordLength >= 4 && poorPassword && (weakPassword || strongPassword)) {
+                weak.classList.add("active");
+                passwordInfo.textContent = "Your password is Weak";
+                passwordInfo.style.color = "orange";
 
- showHide.onclick = function(){
-      showHidePassword()
-}
+            } else {
+                weak.classList.remove("active");
 
-function showHidePassword(){
-  if(passwordInput.type == "password"){
-    passwordInput.type = "text";
-    showHide.textContent = "HIDE";
-    showHide.style.color = "green";
-  }else{
-    passwordInput.type = "password";
-    showHide.textContent = "SHOW";
-    showHide.style.color = "red";
-  }
-}
+            }
+        }
 
+        function strongPasswordStrength(passwordLength, poorPassword, weakPassword, strongPassword) {
 
-      </script>
+            if (passwordLength >= 6 && (poorPassword && weakPassword) && strongPassword) {
+                poor.classList.add("active");
+                weak.classList.add("active");
+                strong.classList.add("active");
+                passwordInfo.textContent = "Your password is strong";
+                passwordInfo.style.color = "green";
+            } else {
+                strong.classList.remove("active");
+
+            }
+        }
+
+        let showHide = document.querySelector('#passwordInput #showHide');
+
+        showHide.onclick = function() {
+            showHidePassword()
+        }
+
+        function showHidePassword() {
+            if (passwordInput.type == "password") {
+                passwordInput.type = "text";
+                showHide.textContent = "HIDE";
+                showHide.style.color = "green";
+            } else {
+                passwordInput.type = "password";
+                showHide.textContent = "SHOW";
+                showHide.style.color = "red";
+            }
+        }
+    </script>
 </body>
 <!-- login23:12-->
 
