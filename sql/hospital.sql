@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 03, 2022 at 09:54 PM
+-- Generation Time: Oct 01, 2022 at 07:52 PM
 -- Server version: 10.6.7-MariaDB-2ubuntu1.1
 -- PHP Version: 8.1.10
 
@@ -276,6 +276,7 @@ CREATE TABLE `patients` (
   `patient_last_name` varchar(255) NOT NULL,
   `patient_email` varchar(255) NOT NULL,
   `patient_contact` varchar(255) NOT NULL,
+  `patient_age` int(3) DEFAULT NULL,
   `patient_gender` varchar(11) DEFAULT 'm',
   `patient_profile_image` varchar(255) NOT NULL DEFAULT 'user.jpg',
   `patient_password` varchar(255) NOT NULL,
@@ -286,13 +287,13 @@ CREATE TABLE `patients` (
 -- Dumping data for table `patients`
 --
 
-INSERT INTO `patients` (`patient_id`, `patient_first_name`, `patient_last_name`, `patient_email`, `patient_contact`, `patient_gender`, `patient_profile_image`, `patient_password`, `patient_create_date`) VALUES
-(10, 'Hope', 'Kansiime', 'hope@gmail.com', '0757961588', 'f', 'user.jpg', '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-21 13:34:55'),
-(15, 'Kalule', 'Rajab', 'rajkal@gmail.com', '07566572912', 'm', 'user.jpg', '3ca6671a73be57ba7256b90f5a005a8d', '2022-09-22 06:46:04'),
-(16, 'Mamuku', 'Christine', 'christn@gmail.com', '0786543876', 'f', 'user.jpg', 'ccadde22ee8c9cd9339b3e5db71d4521', '2022-09-22 06:52:04'),
-(19, 'Nal', 'Henry', 'nal@gmail.com', '0789121234', 'm', '19109E7BA1-B2EB-431E-AB8C-BB395458E944.jpeg', 'dbb2a6be50dd109016dd420808d5a575', '2022-09-22 07:19:02'),
-(20, 'NIRINGIYIMAANA', 'Emmanuel', 'emmanuelniringiyimaana@gmail.com', '0703487337', 'm', '201900728724.jpeg', 'eee8226e49414acbd19ffe56579cddca', '2022-09-22 11:24:41'),
-(21, 'kazimiri', 'chrispus', 'chris@gmail.com', '0753446252', 'm', '21IMG_20201024_141811_646.jpg', '5c443b2003676fa5e8966030ce3a86ea', '2022-10-01 16:40:48');
+INSERT INTO `patients` (`patient_id`, `patient_first_name`, `patient_last_name`, `patient_email`, `patient_contact`, `patient_age`, `patient_gender`, `patient_profile_image`, `patient_password`, `patient_create_date`) VALUES
+(10, 'Hope', 'Kansiime', 'hope@gmail.com', '0757961588', 78, 'f', 'user.jpg', '81dc9bdb52d04dc20036dbd8313ed055', '2022-09-21 13:34:55'),
+(15, 'Kalule', 'Rajab', 'rajkal@gmail.com', '07566572912', 23, 'm', 'user.jpg', '3ca6671a73be57ba7256b90f5a005a8d', '2022-09-22 06:46:04'),
+(16, 'Mamuku', 'Christine', 'christn@gmail.com', '0786543876', 45, 'f', 'user.jpg', 'ccadde22ee8c9cd9339b3e5db71d4521', '2022-09-22 06:52:04'),
+(19, 'Nal', 'Henry', 'nal@gmail.com', '0789121234', 22, 'm', '19109E7BA1-B2EB-431E-AB8C-BB395458E944.jpeg', 'dbb2a6be50dd109016dd420808d5a575', '2022-09-22 07:19:02'),
+(20, 'NIRINGIYIMAANA', 'Emmanuel', 'emmanuelniringiyimaana@gmail.com', '0703487337', 23, 'm', '201900728724.jpeg', 'eee8226e49414acbd19ffe56579cddca', '2022-09-22 11:24:41'),
+(21, 'kazimiri', 'chrispus', 'chris@gmail.com', '0753446252', NULL, 'm', '21IMG_20201024_141811_646.jpg', '5c443b2003676fa5e8966030ce3a86ea', '2022-10-01 16:40:48');
 
 -- --------------------------------------------------------
 
