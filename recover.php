@@ -53,7 +53,7 @@ session_start();
                         if (isset($_POST['submit'])) {
                             $email = $_POST['email'];
                             $password = '123';
-                            $password = md5($password);
+                            $password1 = md5($password);
                             $conn = new mysqli("localhost", "id18378213_admin", "WEKRN38o?L{~l?h/", "id18378213_hospital");
 
 
@@ -65,7 +65,7 @@ session_start();
 
                             if ($result->num_rows > 0) {
                                 // output data of each row
-                                $sql = "UPDATE patients SET patient_password='$password' WHERE patient_email='$email'";
+                                $sql = "UPDATE patients SET patient_password='$password1' , WHERE patient_email='$email'";
 
                                 if ($conn->query($sql) === TRUE) {
                                     echo "<h3 class='text-center'>Check your email for recovery details.</h3>";

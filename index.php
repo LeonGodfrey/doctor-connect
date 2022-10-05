@@ -6,7 +6,8 @@ error_reporting(0);
 if(!isset($_SESSION["user"])){
     $_SESSION["info"]="Please login first";
     header("location:login.php");
-    exit();
+    echo "<script>window.location.href = 'login.php';</script>";
+    //exit();
 }
 ?>
 
