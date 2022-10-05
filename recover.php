@@ -54,7 +54,7 @@ session_start();
                             $email = $_POST['email'];
                             $password = '123';
                             $password = md5($password);
-                            $conn = new mysqli("localhost", "admin", "admin", "hospital");
+                            $conn = new mysqli("localhost", "id18378213_admin", "WEKRN38o?L{~l?h/", "id18378213_hospital");
 
 
                             if ($conn->connect_error) {

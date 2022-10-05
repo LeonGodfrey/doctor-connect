@@ -12,7 +12,7 @@ function getApts(array $request)
         $id = $_SESSION["user"][0]["patient_id"];
         $query_append .= " WHERE patients.patient_id=$id";
     }
-    return DB::getConnection()->query("SELECT *, TIME_FORMAT(appointment_time, '%H:%i %p') AS aptime FROM appointments 
+    return DB::getConnection()->query("SELECT *, TIME_FORMAT(appointmen_time, '%H:%i %p') AS aptime FROM appointments 
      join doctors on doctors.doctor_id=appointments.doctor_id 
      join departments on doctors.department_id=departments.department_id 
      join patients on patients.patient_id=appointments.patient_id $query_append")->fetchAll();
@@ -58,7 +58,7 @@ function aptAction(array $request)
     // -----------
     //uncomment this code if you are on a server with smtp
     // Create connection
-    $conn = new mysqli("localhost", "admin", "admin", "hospital");
+    $conn = new mysqli("localhost", "id18378213_admin", "WEKRN38o?L{~l?h/", "id18378213_hospital");
     // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -88,12 +88,12 @@ function aptAction(array $request)
     if ($action == "approve") {
 
 
-        // $to = $patient2;
-        // $subject = "Doctor-connect";
-        // $txt = "Your appointment has been approved scheduled on ".$row['appointment_date']." at ".$row['appointment_time'];
-        // $headers = "From: doctorconnectsys05@gmail.com" . "\r\n";
+        $to = $patient2;
+        $subject = "Doctor-connect";
+        $txt = "Your appointment has been approved scheduled on ".$row['appointment_date']." at ".$row['appointment_time'];
+        $headers = "From: doctorconnectsys05@gmail.com" . "\r\n";
 
-        // mail($to,$subject,$txt,$headers);    
+        mail($to,$subject,$txt,$headers);    
 
 
 
@@ -105,12 +105,12 @@ function aptAction(array $request)
         $query .= "'rejected'";
         $_SESSION["success"] = "Appointment Rejected Successfully";
 
-        //  $to = $patient2;
-        // $subject = "Doctor-connect";
-        // $txt = "Your appointment has been rejected";
-        // $headers = "From: doctorconnectsys05@gmail.com" . "\r\n";
+         $to = $patient2;
+        $subject = "Doctor-connect";
+        $txt = "Your appointment has been rejected";
+        $headers = "From: doctorconnectsys05@gmail.com" . "\r\n";
 
-        // mail($to,$subject,$txt,$headers); 
+        mail($to,$subject,$txt,$headers); 
     }
 
     if ($action == "pend") {
