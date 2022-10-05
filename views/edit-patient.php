@@ -61,7 +61,14 @@
 
 
 
-                                
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Age <span class="text-danger"></span></label>
+                                       
+                                            <input type="number" class="form-control" name="age" value="<?php echo($patient['patient_age']) ?>">
+                                       
+                                    </div>
+                                </div>
 								
                                 <input type="text" name="img_name" value="<?php echo $patient['patient_profile_image'] ?>" hidden>
                                 <div class="col-sm-6">
