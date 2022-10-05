@@ -20,7 +20,7 @@
 									<tr>
 										<th>Appointment ID</th>
 										<th>Patient Name</th>
-										
+										<th>Age</th>
 										<th>Doctor Name</th>
 										<th>Department</th>
 										<th>Appointment Date</th>
@@ -37,7 +37,7 @@
 									<tr>
 										<td>APT00<?php echo($appointment["appointment_id"]) ?></td>
 										<td><img width="28" height="28" src="assets/img/user.jpg" class="rounded-circle m-r-5" alt=""> <?php echo($appointment["patient_first_name"]) ?> <?php echo($appointment["patient_last_name"]) ?></td>
-										
+										<td><?php echo($appointment["patient_age"]) ?></td>
 										<td><?php echo($appointment["doctor_first_name"]) ?> <?php echo($appointment["doctor_last_name"]) ?></td>
 										<td><?php echo($appointment["department_name"]) ?></td>
 										<td><?php echo($appointment["appointment_date"]) ?></td>

@@ -15,7 +15,7 @@
 									<tr>
 										<th>First Name</th>
 										<th>Last Name</th>
-										
+										<th>Age</th>
 										<th>Phone</th>
 										<th>Email</th>
 
@@ -34,7 +34,7 @@
 											<img width="28" height="28" src="assets/img/<?php echo($patient["patient_profile_image"]) ?>" class="rounded-circle m-r-5" alt=""> <?php echo($patient["patient_first_name"]) ?><span class="badge badge-pill badge-sm bg-primary float-right  text-light" id="chat-<?php echo $patient["patient_id"] ?>" style="display:none">0</span>
                        </td>
 										<td><?php echo($patient["patient_last_name"]) ?></td>
-										
+										<td><?php echo($patient["patient_age"]) ?></td>
 			
 										<td><?php echo($patient["patient_contact"]) ?></td>
 										<td><?php echo($patient["patient_email"]) ?></td>
