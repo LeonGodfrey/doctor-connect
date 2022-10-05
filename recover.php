@@ -53,8 +53,8 @@ session_start();
                         if (isset($_POST['submit'])) {
                             $email = $_POST['email'];
                             $password = '123';
-                            $password1 = md5($password);
-                            $conn = new mysqli("localhost", "id18378213_admin", "WEKRN38o?L{~l?h/", "id18378213_hospital");
+                            $password = md5($password);
+                            $conn = new mysqli("localhost", "admin", "admin", "hospital");
 
 
                             if ($conn->connect_error) {
@@ -73,12 +73,12 @@ session_start();
                                     echo "Error updating record: " . $conn->error;
                                 }
 
-                                $to = $email;
-                                $subject = "Doctor-connect";
-                                $txt = "Your password has been reset to : ".$password." login and update your profile";
-                                $headers = "From: doctorconnectsys05@gmail.com" . "\r\n";
+                                // $to = $email;
+                                // $subject = "Doctor-connect";
+                                // $txt = "Your password has been reset to : ".$password." login and update your profile";
+                                // $headers = "From: doctorconnectsys05@gmail.com" . "\r\n";
 
-                                mail($to,$subject,$txt,$headers);    
+                                // mail($to,$subject,$txt,$headers);    
                             } else {
                                 echo "<h3 class='text-center'>Email does not exist!.</h3>";
                             }

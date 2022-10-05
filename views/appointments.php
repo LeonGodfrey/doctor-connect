@@ -44,7 +44,7 @@
                                     ?>
                                     <td><?php echo ($diff->format('%y')) ?></td>
 
-                                    
+
                                     <td><?php echo ($appointment["doctor_first_name"]) ?> <?php echo ($appointment["doctor_last_name"]) ?></td>
                                     <td><?php echo ($appointment["department_name"]) ?></td>
                                     <td><?php echo ($appointment["appointment_date"]) ?></td>

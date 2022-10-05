@@ -12,7 +12,7 @@ function getApts(array $request)
         $id = $_SESSION["user"][0]["patient_id"];
         $query_append .= " WHERE patients.patient_id=$id";
     }
-    return DB::getConnection()->query("SELECT *, TIME_FORMAT(appointmen_time, '%H:%i %p') AS aptime FROM appointments 
+    return DB::getConnection()->query("SELECT *, TIME_FORMAT(appointment_time, '%H:%i %p') AS aptime FROM appointments 
      join doctors on doctors.doctor_id=appointments.doctor_id 
      join departments on doctors.department_id=departments.department_id 
      join patients on patients.patient_id=appointments.patient_id $query_append")->fetchAll();
@@ -58,31 +58,28 @@ function aptAction(array $request)
     // -----------
     //uncomment this code if you are on a server with smtp
     // Create connection
-    $conn = new mysqli("localhost", "id18378213_admin", "WEKRN38o?L{~l?h/", "id18378213_hospital");
+    $conn = new mysqli("localhost", "admin", "admin", "hospital");
     // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT patient_id, appointment_date, appointment_time FROM appointments WHERE appointment_id = '$id'";
+    $sql = "SELECT patient_id, appointment_date, TIME_FORMAT(appointment_time, '%H:%i %p') AS aptime FROM appointments WHERE appointment_id = '$id'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         // output data of each row
         $row = $result->fetch_assoc();
         $patient1 = $row['patient_id'];
-    $sql1 = "SELECT patient_email FROM patients WHERE patient_id = '$patient1'";
-    $result1 = $conn->query($sql1);
-    $row1 = $result1->fetch_assoc();
-    $patient2 = $row1['patient_email'];
-    
-            
-        
+        $sql1 = "SELECT patient_email FROM patients WHERE patient_id = '$patient1'";
+        $result1 = $conn->query($sql1);
+        $row1 = $result1->fetch_assoc();
+        $patient2 = $row1['patient_email'];
     } else {
         echo "0 results";
     }
     $conn->close();
-   
+
 
     $query = "UPDATE appointments SET appointment_status=";
     if ($action == "approve") {
@@ -90,10 +87,13 @@ function aptAction(array $request)
 
         $to = $patient2;
         $subject = "Doctor-connect";
-        $txt = "Your appointment has been approved scheduled on ".$row['appointment_date']." at ".$row['appointment_time'];
+        $txt = "Your appointment has been approved scheduled on : " . $row['appointment_date'] . ",  at : " . $row['aptime']."\n Doctor connect for your convience!";
+        
+        // use wordwrap() if lines are longer than 70 characters
+        $txt = wordwrap($txt, 70);
         $headers = "From: doctorconnectsys05@gmail.com" . "\r\n";
 
-        mail($to,$subject,$txt,$headers);    
+        mail($to, $subject, $txt, $headers);
 
 
 
@@ -105,12 +105,12 @@ function aptAction(array $request)
         $query .= "'rejected'";
         $_SESSION["success"] = "Appointment Rejected Successfully";
 
-         $to = $patient2;
-        $subject = "Doctor-connect";
-        $txt = "Your appointment has been rejected";
-        $headers = "From: doctorconnectsys05@gmail.com" . "\r\n";
+        //  $to = $patient2;
+        // $subject = "Doctor-connect";
+        // $txt = "Your appointment has been rejected";
+        // $headers = "From: doctorconnectsys05@gmail.com" . "\r\n";
 
-        mail($to,$subject,$txt,$headers); 
+        // mail($to,$subject,$txt,$headers); 
     }
 
     if ($action == "pend") {
