@@ -30,7 +30,7 @@
 
                                 <?php if($_SESSION["role"]=="admin"): ?>
 
-                                <span class="user-img"><img class="rounded-circle" src="assets/img/user.jpg" alt="Admin" width="40">
+                                <span class="user-img"><img class="rounded-circle" src="assets/img/user123.jpg" alt="Admin" width="40">
 
                                 <?php endif ?>
 
