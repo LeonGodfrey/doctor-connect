@@ -90,7 +90,7 @@
                                         <?php foreach($appointments as $appointment):?>
 											<tr>
 												<td style="min-width: 200px;">
-													<a class="avatar" href="profile.html">B</a>
+													<a href="profile.html"><img width="28" height="28" src="assets/img/<?php echo ($appointment["patient_profile_image"]) ?>" class="rounded-circle m-r-4" alt=""></a>
 													<h2><a href="profile.html"><?php echo $appointment["patient_first_name"] ?><span><?php echo $appointment["patient_contact"] ?></span></a></h2>
 												</td>                 
 												<td>
@@ -130,7 +130,7 @@
                                     <li>
                                         <div class="contact-cont">
                                             <div class="float-left user-img m-r-10">
-                                                <a href="profile.html" title="John Doe"><img src="assets/img/user.jpg" alt="" class="w-40 rounded-circle"><span class="status online"></span></a>
+                                                <a href="profile.html" title="John Doe"><img width="28" height="28" src="assets/img/<?php echo ($doctor["profile_image"]) ?>" class="w-40 rounded-circle" alt=""></a>
                                             </div>
                                             <div class="contact-info">
                                                 <span class="contact-name text-ellipsis"><?php echo $doctor["doctor_first_name"] ?></span>
@@ -166,7 +166,7 @@
                                         <?php foreach($patients as $patient):?>
 											<tr>
 												<td>
-													<img width="28" height="28" class="rounded-circle" src="assets/img/user.jpg" alt=""> 
+													<img width="28" height="28" class="rounded-circle" src="assets/img/<?php echo ($patient["patient_profile_image"]) ?>" alt=""> 
 													<h2><?php echo $patient["patient_first_name"] ?> <?php echo $patient["patient_last_name"] ?></h2>
 												</td>
 												<td>J<?php echo $patient["patient_email"] ?></td>
