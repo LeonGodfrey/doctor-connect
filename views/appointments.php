@@ -14,7 +14,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <table class="table table-striped custom-table">
+                    <table id="example1" class="table table-striped custom-table">
+                    <!-- <table id="example1" class="table table-bordered table-striped"> -->
                         <thead>
                             <tr>
                                 <th>Appointment ID</th>
@@ -35,7 +36,7 @@
                             <?php foreach ($appointments as $appointment) : ?>
                                 <tr>
                                     <td>APT00<?php echo ($appointment["appointment_id"]) ?></td>
-                                    <td><img width="28" height="28" src="assets/img/user.jpg" class="rounded-circle m-r-5" alt=""> <?php echo ($appointment["patient_first_name"]) ?> <?php echo ($appointment["patient_last_name"]) ?></td>
+                                    <td><img width="28" height="28" src="assets/img/<?php echo ($appointment["patient_profile_image"]) ?>" class="rounded-circle m-r-5" alt=""> <?php echo ($appointment["patient_first_name"]) ?> <?php echo ($appointment["patient_last_name"]) ?></td>
                                     <?php
                                     $dateOfBirth = $appointment["patient_dob"];
                                     $today = date("Y-m-d");
@@ -155,3 +156,4 @@
     </div>
 </div>
 </div>
+

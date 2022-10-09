@@ -109,7 +109,7 @@
 								</div>
                             </div>
                             <div class="m-t-20 text-center">
-                                <button class="btn btn-primary submit-btn" name="add_doctor">Create Doctor</button>
+                                <button class="btn btn-primary submit-btn" name="add_doctor">Add Doctor</button>
                             </div>
                         </form>
                     </div>

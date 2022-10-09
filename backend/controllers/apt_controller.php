@@ -57,43 +57,43 @@ function aptAction(array $request)
 
     // -----------
     //uncomment this code if you are on a server with smtp
-    // Create connection
-    $conn = new mysqli("localhost", "admin", "admin", "hospital");
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    // // Create connection
+    // $conn = new mysqli("localhost", "admin", "admin", "hospital");
+    // // Check connection
+    // if ($conn->connect_error) {
+    //     die("Connection failed: " . $conn->connect_error);
+    // }
 
-    $sql = "SELECT patient_id, appointment_date, TIME_FORMAT(appointment_time, '%H:%i %p') AS aptime FROM appointments WHERE appointment_id = '$id'";
-    $result = $conn->query($sql);
+    // $sql = "SELECT patient_id, appointment_date, TIME_FORMAT(appointment_time, '%H:%i %p') AS aptime FROM appointments WHERE appointment_id = '$id'";
+    // $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        // output data of each row
-        $row = $result->fetch_assoc();
-        $patient1 = $row['patient_id'];
-        $sql1 = "SELECT patient_email FROM patients WHERE patient_id = '$patient1'";
-        $result1 = $conn->query($sql1);
-        $row1 = $result1->fetch_assoc();
-        $patient2 = $row1['patient_email'];
-    } else {
-        echo "0 results";
-    }
-    $conn->close();
+    // if ($result->num_rows > 0) {
+    //     // output data of each row
+    //     $row = $result->fetch_assoc();
+    //     $patient1 = $row['patient_id'];
+    //     $sql1 = "SELECT patient_email FROM patients WHERE patient_id = '$patient1'";
+    //     $result1 = $conn->query($sql1);
+    //     $row1 = $result1->fetch_assoc();
+    //     $patient2 = $row1['patient_email'];
+    // } else {
+    //     echo "0 results";
+    // }
+    // $conn->close();
 
 
     $query = "UPDATE appointments SET appointment_status=";
     if ($action == "approve") {
 
 
-        $to = $patient2;
-        $subject = "Doctor-connect";
-        $txt = "Your appointment has been approved scheduled on : " . $row['appointment_date'] . ",  at : " . $row['aptime']."\n Doctor connect for your convience!";
+        // $to = $patient2;
+        // $subject = "Doctor-connect";
+        // $txt = "Your appointment has been approved scheduled on : " . $row['appointment_date'] . ",  at : " . $row['aptime']."\n Doctor connect for your convience!";
         
-        // use wordwrap() if lines are longer than 70 characters
-        $txt = wordwrap($txt, 70);
-        $headers = "From: doctorconnectsys05@gmail.com" . "\r\n";
+        // // use wordwrap() if lines are longer than 70 characters
+        // $txt = wordwrap($txt, 70);
+        // $headers = "From: doctorconnectsys05@gmail.com" . "\r\n";
 
-        mail($to, $subject, $txt, $headers);
+        // mail($to, $subject, $txt, $headers);
 
 
 

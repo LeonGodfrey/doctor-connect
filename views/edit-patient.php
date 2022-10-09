@@ -61,14 +61,7 @@
 
 
 
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Date of Birth <span class="text-danger"></span></label>
-                                       
-                                            <input type="date" class="form-control" name="dob" value="">
-                                       
-                                    </div>
-                                </div>
+                            
 								
                                 <input type="text" name="img_name" value="<?php echo $patient['patient_profile_image'] ?>" hidden>
                                 <div class="col-sm-6">

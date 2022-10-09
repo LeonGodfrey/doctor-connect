@@ -158,8 +158,7 @@ function editPatient(array $request){
          patient_email='$email',
          patient_contact='$contact',
          patient_gender='$gender',
-         patient_profile_image='$img',
-         patient_dob='$dob' where patient_id='$id'
+         patient_profile_image='$img' where patient_id='$id'
          ";
         DB::getConnection()->exec($sql);
         $_SESSION["success"] = "Patient Record Updated Successfully";

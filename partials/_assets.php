@@ -4,6 +4,7 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/jquery.dataTables.min.js"></script>
 <script src="assets/js/dataTables.bootstrap4.min.js"></script>
+
 <script src="assets/js/moment.min.js"></script>
 <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
 <script src="assets/js/jquery.slimscroll.js"></script>
@@ -13,8 +14,28 @@
 <script src="assets/js/app.js"></script>
 
 
+<script src="assets/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="assets/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="assets/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="assets/datatables-buttons/js/buttons.print.min.js"></script>
+
+<!-- table script -->
+<script>
+  $(document).ready(function() {
+    $('#example1').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'print'
+        ]
+    } );
+} );
+</script>
+
+
 
 <script>
+
 
 $(function () {
     $('#datetimepicker3').datetimepicker({

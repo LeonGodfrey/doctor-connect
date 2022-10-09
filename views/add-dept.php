@@ -33,7 +33,7 @@
 								</div>
                             </div>
                             <div class="m-t-20 text-center">
-                                <button class="btn btn-primary submit-btn" name="add_dept">Create Department</button>
+                                <button class="btn btn-primary submit-btn" name="add_dept">Add Department</button>
                             </div>
                         </form>
                     </div>
